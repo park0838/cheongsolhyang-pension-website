@@ -3,21 +3,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './styles/globals.css'
 
-// GitHub Pages SPA support
-if (typeof window !== 'undefined') {
-  // Handle redirects from 404.html
-  const search = window.location.search
-  if (search && search.includes('?/')) {
-    const query = search.slice(1).split('&')
-    const route = query.find(param => param.startsWith('/'))
-    if (route) {
-      // GitHub Pages base path 고려
-      const basePath = '/cheongsolhyang-pension-website'
-      const newPath = basePath + route.replace(/~/g, '&')
-      window.history.replaceState(null, null, newPath)
-    }
-  }
-}
+// HashRouter를 사용하므로 SPA 리다이렉션 처리 불필요
 
 // Performance monitoring (production only)
 if (typeof window !== 'undefined' && process.env.NODE_ENV === 'production') {
