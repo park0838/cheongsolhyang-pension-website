@@ -1,0 +1,304 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global base styles */
+@layer base {
+  * {
+    @apply border-neutral-200;
+  }
+
+  body {
+    @apply bg-cream-50 text-neutral-900 font-sans;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary-500;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-cream-100;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-primary-300 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-primary-400;
+  }
+
+  /* Headings */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif font-semibold leading-tight;
+  }
+
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  h3 {
+    @apply text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h4 {
+    @apply text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h5 {
+    @apply text-lg md:text-xl lg:text-2xl;
+  }
+
+  h6 {
+    @apply text-base md:text-lg lg:text-xl;
+  }
+
+  /* Paragraphs */
+  p {
+    @apply text-neutral-700 leading-relaxed;
+  }
+
+  /* Links */
+  a {
+    @apply text-primary-600 hover:text-primary-700 transition-colors duration-200;
+  }
+
+  /* Images */
+  img {
+    @apply max-w-full h-auto;
+  }
+
+  /* Buttons */
+  button {
+    @apply transition-all duration-200 ease-in-out;
+  }
+
+  /* Forms */
+  input, textarea, select {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
+
+/* Component layer for reusable patterns */
+@layer components {
+  /* Container */
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-sm {
+    @apply max-w-4xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Buttons */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg focus:outline-none focus:ring-2 focus:ring-offset-2 transition-all duration-200 ease-in-out disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-medium hover:shadow-large;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-primary-600 border-primary-600 hover:bg-primary-50 focus:ring-primary-500;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-primary-600 border-primary-600 hover:bg-primary-600 hover:text-white focus:ring-primary-500;
+  }
+
+  .btn-lg {
+    @apply px-8 py-4 text-lg;
+  }
+
+  .btn-sm {
+    @apply px-4 py-2 text-sm;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-xl shadow-soft border border-neutral-100 overflow-hidden;
+  }
+
+  .card-hover {
+    @apply hover:shadow-medium hover:-translate-y-1 transition-all duration-300 ease-out;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 lg:py-24;
+  }
+
+  .section-sm {
+    @apply py-12 lg:py-16;
+  }
+
+  .section-lg {
+    @apply py-20 lg:py-32;
+  }
+
+  /* Text styles */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary-600 to-warm-500 bg-clip-text text-transparent;
+  }
+
+  .text-hero {
+    @apply text-5xl md:text-6xl lg:text-7xl font-serif font-bold leading-tight;
+  }
+
+  .text-subtitle {
+    @apply text-xl md:text-2xl text-neutral-600 leading-relaxed;
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  }
+
+  .glass-dark {
+    @apply bg-neutral-900/80 backdrop-blur-md border border-white/10;
+  }
+
+  /* Animations */
+  .animate-on-scroll {
+    @apply opacity-0 translate-y-8 transition-all duration-700 ease-out;
+  }
+
+  .animate-on-scroll.in-view {
+    @apply opacity-100 translate-y-0;
+  }
+
+  /* Loading states */
+  .skeleton {
+    @apply animate-pulse bg-neutral-200 rounded;
+  }
+
+  /* Image overlay */
+  .image-overlay {
+    @apply relative overflow-hidden;
+  }
+
+  .image-overlay::before {
+    @apply absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent z-10;
+    content: '';
+  }
+
+  /* Aspect ratios */
+  .aspect-square {
+    @apply aspect-w-1 aspect-h-1;
+  }
+
+  .aspect-video {
+    @apply aspect-w-16 aspect-h-9;
+  }
+
+  .aspect-photo {
+    @apply aspect-w-4 aspect-h-3;
+  }
+
+  /* Layout utilities */
+  .full-bleed {
+    @apply w-screen relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw];
+  }
+
+  /* Navigation styles */
+  .nav-link {
+    @apply text-neutral-700 hover:text-primary-600 font-medium transition-colors duration-200 relative;
+  }
+
+  .nav-link::after {
+    @apply absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-300;
+    content: '';
+  }
+
+  .nav-link:hover::after,
+  .nav-link.active::after {
+    @apply w-full;
+  }
+
+  /* Form styles */
+  .form-input {
+    @apply w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-neutral-700 mb-2;
+  }
+
+  .form-error {
+    @apply text-red-600 text-sm mt-1;
+  }
+}
+
+/* Utility layer for specific adjustments */
+@layer utilities {
+  /* Text shadow */
+  .text-shadow {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Background patterns */
+  .bg-pattern-dots {
+    background-image: radial-gradient(circle, rgba(45, 90, 39, 0.1) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+
+  .bg-pattern-lines {
+    background-image: linear-gradient(45deg, rgba(45, 90, 39, 0.05) 25%, transparent 25%),
+                      linear-gradient(-45deg, rgba(45, 90, 39, 0.05) 25%, transparent 25%);
+    background-size: 20px 20px;
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn-primary {
+      @apply border-2 border-neutral-900;
+    }
+
+    .text-neutral-600 {
+      @apply text-neutral-900;
+    }
+  }
+
+  /* Reduced motion support */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* Dark mode utilities (for future use) */
+  @media (prefers-color-scheme: dark) {
+    .dark-auto {
+      @apply bg-neutral-900 text-neutral-100;
+    }
+  }
+}
