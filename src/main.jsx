@@ -11,7 +11,10 @@ if (typeof window !== 'undefined') {
     const query = search.slice(1).split('&')
     const route = query.find(param => param.startsWith('/'))
     if (route) {
-      window.history.replaceState(null, null, route.replace(/~/g, '&'))
+      // GitHub Pages base path 고려
+      const basePath = '/cheongsolhyang-pension-website'
+      const newPath = basePath + route.replace(/~/g, '&')
+      window.history.replaceState(null, null, newPath)
     }
   }
 }
