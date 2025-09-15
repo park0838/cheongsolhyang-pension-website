@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react'
+import React, { Suspense, lazy, memo } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
@@ -139,38 +139,44 @@ const HomePage = () => {
   )
 }
 
-// Individual page components for routing
-const RoomsPage = () => (
+// Memoized page components for routing
+const RoomsPage = memo(() => (
   <div className="pt-24">
     <Suspense fallback={<LoadingSpinner />}>
       <Rooms standalone />
     </Suspense>
   </div>
-)
+))
 
-const FacilitiesPage = () => (
+const FacilitiesPage = memo(() => (
   <div className="pt-24">
     <Suspense fallback={<LoadingSpinner />}>
       <Facilities standalone />
     </Suspense>
   </div>
-)
+))
 
-const ReservationPage = () => (
+const ReservationPage = memo(() => (
   <div className="pt-24">
     <Suspense fallback={<LoadingSpinner />}>
       <Reservation standalone />
     </Suspense>
   </div>
-)
+))
 
-const LocationPage = () => (
+const LocationPage = memo(() => (
   <div className="pt-24">
     <Suspense fallback={<LoadingSpinner />}>
       <Location standalone />
     </Suspense>
   </div>
-)
+))
+
+// 컴포넌트 이름 설정 (개발 도구용)
+RoomsPage.displayName = 'RoomsPage'
+FacilitiesPage.displayName = 'FacilitiesPage'
+ReservationPage.displayName = 'ReservationPage'
+LocationPage.displayName = 'LocationPage'
 
 // 404 Not Found page
 const NotFoundPage = () => (
