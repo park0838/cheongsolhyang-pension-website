@@ -4,6 +4,8 @@ import { VitePWA } from 'vite-plugin-pwa'
 import legacy from '@vitejs/plugin-legacy'
 
 export default defineConfig({
+  // GitHub Pages 배포를 위한 base path 설정
+  base: process.env.NODE_ENV === 'production' ? '/cheongsolhyang-pension-website/' : '/',
   plugins: [
     react(),
     legacy({
